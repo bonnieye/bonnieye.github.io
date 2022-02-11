@@ -20,31 +20,36 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Contents about C++&#x2F;Python&#x2F;Leetcode">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Magic_Dog&#39;s Home">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="833. 字符串中的查找与替换123456789101112131415161718class Solution &amp;#123;public:    string findReplaceString(string s, vector&lt;int&gt;&amp; indices, vector&lt;string&gt;&amp; sources, vector&lt;string&gt;&amp;amp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetNote">
+<meta property="og:url" content="http://example.com/2022/02/11/LeetNote/index.html">
 <meta property="og:site_name" content="Magic_Dog&#39;s Home">
-<meta property="og:description" content="Contents about C++&#x2F;Python&#x2F;Leetcode">
+<meta property="og:description" content="833. 字符串中的查找与替换123456789101112131415161718class Solution &amp;#123;public:    string findReplaceString(string s, vector&lt;int&gt;&amp; indices, vector&lt;string&gt;&amp; sources, vector&lt;string&gt;&amp;amp">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/yeqiuhan/AppData/Roaming/Typora/typora-user-images/image-20220210170547790.png">
+<meta property="og:image" content="c:/Users/yeqiuhan/AppData/Roaming/Typora/typora-user-images/image-20220210173444904.png">
+<meta property="article:published_time" content="2022-02-11T09:16:38.000Z">
+<meta property="article:modified_time" content="2022-02-11T09:19:01.865Z">
 <meta property="article:author" content="bonnieyqh">
 <meta property="article:tag" content="C++&#x2F;Python&#x2F;Leetcode and everything!">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/yeqiuhan/AppData/Roaming/Typora/typora-user-images/image-20220210170547790.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/02/11/LeetNote/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Magic_Dog's Home</title>
+  <title>LeetNote | Magic_Dog's Home</title>
   
 
 
@@ -143,9 +148,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -161,10 +167,9 @@
       <meta itemprop="name" content="Magic_Dog's Home">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/11/LeetNote/" class="post-title-link" itemprop="url">LeetNote</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          LeetNote
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -188,7 +193,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="833-字符串中的查找与替换"><a href="#833-字符串中的查找与替换" class="headerlink" title="833. 字符串中的查找与替换"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-and-replace-in-string/">833. 字符串中的查找与替换</a></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">findReplaceString</span><span class="params">(string s, vector&lt;<span class="type">int</span>&gt;&amp; indices, vector&lt;string&gt;&amp; sources, vector&lt;string&gt;&amp; targets)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = indices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">//需要用map 对可能无序的indices进行一波排序</span></span><br><span class="line">        map&lt;<span class="type">int</span>,pair&lt;string,string&gt;&gt; m;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i =<span class="number">0</span>;i&lt;n;i++) m[indices[i]] = <span class="built_in">pair</span>(sources[i],targets[i]);</span><br><span class="line">        <span class="comment">//注意这里的trick可以从右边开始替换左边的</span></span><br><span class="line">        <span class="comment">//而且注意没有from m.end() iter-- to m.brgin()的写法！</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> iter = m.<span class="built_in">rbegin</span>();iter != m.<span class="built_in">rend</span>();iter++)&#123;</span><br><span class="line">            <span class="type">int</span> pos = iter-&gt;first;</span><br><span class="line">            string s1 = iter-&gt;second.first;</span><br><span class="line">            string s2 = iter-&gt;second.second;</span><br><span class="line">            <span class="keyword">if</span>(s.<span class="built_in">substr</span>(pos,s1.<span class="built_in">size</span>()) == s1) s = s.<span class="built_in">substr</span>(<span class="number">0</span>,pos) + s2 +s.<span class="built_in">substr</span>(pos+s1.<span class="built_in">size</span>());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h3 id="833-字符串中的查找与替换"><a href="#833-字符串中的查找与替换" class="headerlink" title="833. 字符串中的查找与替换"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-and-replace-in-string/">833. 字符串中的查找与替换</a></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">findReplaceString</span><span class="params">(string s, vector&lt;<span class="type">int</span>&gt;&amp; indices, vector&lt;string&gt;&amp; sources, vector&lt;string&gt;&amp; targets)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = indices.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">//需要用map 对可能无序的indices进行一波排序</span></span><br><span class="line">        map&lt;<span class="type">int</span>,pair&lt;string,string&gt;&gt; m;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i =<span class="number">0</span>;i&lt;n;i++) m[indices[i]] = <span class="built_in">pair</span>(sources[i],targets[i]);</span><br><span class="line">        <span class="comment">//注意这里的trick可以从右边开始替换左边的</span></span><br><span class="line">        <span class="comment">//而且注意没有from m.end() iter-- to m.brgin()的写法！</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> iter = m.<span class="built_in">rbegin</span>();iter != m.<span class="built_in">rend</span>();iter++)&#123;</span><br><span class="line">            <span class="type">int</span> pos = iter-&gt;first;</span><br><span class="line">            string s1 = iter-&gt;second.first;</span><br><span class="line">            string s2 = iter-&gt;second.second;</span><br><span class="line">            <span class="keyword">if</span>(s.<span class="built_in">substr</span>(pos,s1.<span class="built_in">size</span>()) == s1) s = s.<span class="built_in">substr</span>(<span class="number">0</span>,pos) + s2 +s.<span class="built_in">substr</span>(pos+s1.<span class="built_in">size</span>());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">findReplaceString</span><span class="params">(string s, vector&lt;<span class="type">int</span>&gt;&amp; indices, vector&lt;string&gt;&amp; sources, vector&lt;string&gt;&amp; targets)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = indices.<span class="built_in">size</span>();</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; m;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            m[indices[i]]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(indices.<span class="built_in">begin</span>(),indices.<span class="built_in">end</span>());</span><br><span class="line">        <span class="comment">//需要用map 对可能无序的indices进行一波排序</span></span><br><span class="line">        <span class="type">int</span> offset = <span class="number">0</span>;</span><br><span class="line">         <span class="keyword">for</span>(<span class="type">int</span> sIdx:indices)&#123;</span><br><span class="line">            <span class="type">int</span> new_pos = sIdx+offset;</span><br><span class="line">            string a = sources[m[sIdx]];</span><br><span class="line">            string b = targets[m[sIdx]];</span><br><span class="line">            <span class="type">int</span> asz = a.<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">if</span>(s.<span class="built_in">substr</span>(new_pos,asz) == a) &#123;</span><br><span class="line">                s = s.<span class="built_in">substr</span>(<span class="number">0</span>,new_pos) + b +s.<span class="built_in">substr</span>(new_pos + asz);</span><br><span class="line">                offset += b.<span class="built_in">size</span>() - asz;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -208,92 +213,30 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">splitArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> m)</span> </span>&#123;</span><br><span class="line">        <span class="type">long</span> l = nums[<span class="number">0</span>], h = <span class="number">0</span>;<span class="comment">//int类型在这里不合适，因为h可能会超过int类型能表示的最大值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i : nums)</span><br><span class="line">        &#123;</span><br><span class="line">            h += i;</span><br><span class="line">            l = l &gt; i ? l : i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (l&lt;h)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">long</span> mid = (l + h) / <span class="number">2</span>;</span><br><span class="line">            <span class="type">long</span> temp = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> cnt = <span class="number">1</span>;<span class="comment">//初始值必须为1</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> i:nums)</span><br><span class="line">            &#123;</span><br><span class="line">                temp += i;</span><br><span class="line">                <span class="keyword">if</span>(temp&gt;mid)</span><br><span class="line">                &#123;</span><br><span class="line">                    temp = i;</span><br><span class="line">                    ++cnt;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(cnt&gt;m)</span><br><span class="line">                l = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                h = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/11/hello-world/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="bonnieyqh">
-      <meta itemprop="description" content="Contents about C++/Python/Leetcode">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Magic_Dog's Home">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/11/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-11 16:12:59 / 修改时间：16:02:35" itemprop="dateCreated datePublished" datetime="2022-02-11T16:12:59+08:00">2022-02-11</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/11/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -346,6 +289,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#833-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE%E4%B8%8E%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">833. 字符串中的查找与替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1423-%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E7%82%B9%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">1423. 可获得的最大点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#410-%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="nav-number">3.</span> <span class="nav-text">410. 分割数组的最大值</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
