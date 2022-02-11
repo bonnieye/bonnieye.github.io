@@ -6,10 +6,10 @@
 title: Magic_Dog's Home
 subtitle: 魔力狗的窝
 description: Contents about C++/Python/Leetcode
-keywords: C++/Python/Leetcode
+keywords: C++/Python/Leetcode and everything!
 author: bonnieyqh
-language: en
-timezone: zh-CN
+language: zh-CN
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -97,7 +97,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
